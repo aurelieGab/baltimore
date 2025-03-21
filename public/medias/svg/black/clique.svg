@@ -1,0 +1,12 @@
+<svg width="64px" viewBox="0 0 744 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <g id="cl-l" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="clique-logo" fill="#000">
+        <path id="Q" d="M324,0 L324,36 L408,36 L408,0 L324,0 Z M324,528 L324,564 L408,564 L408,528 L324,528 Z M288,0 L288,564 L324,564 L324,0 L288,0 Z M408,0 L408,564 L444,564 L444,0 L408,0 Z M348,492 L348,528 L384,528 L384,492 L348,492 Z M348,564 L348,600 L384,600 L384,564 L348,564 Z"></path>
+        <path id="I" d="M216,36 L216,72 L252,72 L252,36 L216,36 Z M216,108 L216,408 L252,408 L252,108 L216,108 Z"></path>
+        <path id="L" d="M180,444 L180,480 L252,480 L252,444 L180,444 Z M144,108 L144,480 L180,480 L180,108 L144,108 Z"></path>
+        <path id="C" d="M36,144 L36,180 L108,180 L108,144 L36,144 Z M36,408 L36,444 L108,444 L108,408 L36,408 Z M0,144 L0,444 L36,444 L36,144 L0,144 Z"></path>
+        <path id="U" d="M480,108 L480,480 L516,480 L516,108 L480,108 Z M564,108 L564,480 L600,480 L600,108 L564,108 Z M516,444 L516,480 L564,480 L564,444 L516,444 Z"></path>
+        <path id="E" d="M636,144 L636,444 L672,444 L672,144 L636,144 Z M672,264 L672,300 L708,300 L708,264 L672,264 Z M672,144 L672,180 L744,180 L744,144 L672,144 Z M672,408 L672,444 L744,444 L744,408 L672,408 Z"></path>
+        </g>
+    </g>
+</svg>
