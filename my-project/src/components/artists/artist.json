@@ -1,0 +1,74 @@
+{
+  "collectionName": "components_artists_artists",
+  "info": {
+    "displayName": "artist",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "homeImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "albumName": {
+      "type": "string",
+      "required": true
+    },
+    "albumUrl": {
+      "type": "string"
+    },
+    "albumImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "biography": {
+      "type": "blocks"
+    },
+    "spotifyID": {
+      "type": "string"
+    },
+    "youtubeID": {
+      "type": "string"
+    },
+    "medias": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medias.medias-with-link"
+    },
+    "homeImagePosition": {
+      "type": "string"
+    },
+    "thumbImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

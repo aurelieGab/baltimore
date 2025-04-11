@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artists",
+  "info": {
+    "singularName": "artist",
+    "pluralName": "artists",
+    "displayName": "artist",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "artistInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "artists.artist"
+    }
+  }
+}

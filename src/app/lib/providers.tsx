@@ -4,7 +4,7 @@ import StyledComponentsRegistry from './registry'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
 import GlobalStyles from '@/app/styles/globalStyles'
-import Header from '@/app/components/header'
+import Header from '@/app/components/shared/header'
 
 const Providers = (props: React.PropsWithChildren) => {
   return (

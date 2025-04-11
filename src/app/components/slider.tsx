@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // const ArtistImg = styled(Image)`
@@ -13,6 +13,7 @@ import styled from 'styled-components'
 
 const ArtistImg = styled(Image)`
   left: 300px;
+  object-fit: cover;
 `
 
 const SliderContainer = styled.div`
@@ -40,12 +41,7 @@ const Slider = ({ slides }) => {
     <SliderContainer>
       <button onClick={goToPrevious}>Précédent</button>
 
-      <ArtistImg
-        src={slides[currentIndex]}
-        fill={true}
-        alt={`Slide ${currentIndex}`}
-        objectFit="cover"
-      />
+      <ArtistImg src={slides[currentIndex]} fill={true} alt={`Slide ${currentIndex}`} />
       <button onClick={goToNext}>Suivant</button>
     </SliderContainer>
   )

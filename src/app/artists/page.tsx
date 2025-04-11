@@ -1,39 +1,38 @@
-'use client'
-import styled from 'styled-components'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Anton } from 'next/font/google'
-import Medias from '@/app/components/medias'
+import Artists from '@/app/artists/artists'
+import { draftMode } from 'next/headers'
 
-const Container = styled.div`
-  position: relative;
-  min-height: 100vh;
-  font-family: Anton;
-  background: #efefeb;
-  color: #fff;
-`
+const ArtistsPage = async () => {
+  const token = process.env.STRAPI_API_TOKEN
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL
+  const draft = await draftMode()
+  const isEnabled: boolean = draft.isEnabled
 
-const Main = styled.main`
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+  try {
+    const response = await fetch(
+      `${strapiUrl}/api/artists?populate[artistInfo][populate]=homeImage&populate[artistInfo][populate]=thumbImage&status=${
+        isEnabled ? 'preview' : 'live'
+      }`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
 
-const Content = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 16px;
-`
+    if (!response.ok) {
+      console.log('Erreur HTTP:', response.status)
+      throw new Error('Erreur lors de la récupération des artistes')
+    }
 
-export default function Artists() {
-  return (
-    <Container>
-      <Main>
-        <Content>
-          <Medias />
-        </Content>
-      </Main>
-    </Container>
-  )
+    const data = await response.json()
+    const artists = data.data[0].artistInfo
+
+    return <Artists artists={artists} />
+    // return <p>lzlzl</p>
+  } catch (error) {
+    console.error('Erreur de fetch:', error)
+    return <div>Erreur lors du chargement des artistes.</div>
+  }
 }
+
+export default ArtistsPage

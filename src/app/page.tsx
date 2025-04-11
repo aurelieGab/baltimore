@@ -1,45 +1,37 @@
-'use client'
-import styled from 'styled-components'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Bebas_Neue } from 'next/font/google'
-import ImageSlider from '@/app/components/carousel'
-import { fetchMedia, Media } from '@/app/utils/fetchMedia'
-import { useEffect, useState } from 'react'
+import Home from '@/app/home/home'
+import { draftMode } from 'next/headers'
 
-const Container = styled.div`
-  position: relative;
-  font-family: 'Bebas Neue';
-  background: #000;
-`
+const HomePage = async () => {
+  const token = process.env.STRAPI_API_TOKEN
+  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL
+  const draft = await draftMode()
+  const isEnabled: boolean = draft.isEnabled
 
-const Main = styled.main`
-  position: relative;
-  width: 100%;
-  min-height: calc(100vh - ${(props) => props.theme.headerHeight});
-  background-size: cover;
-  background-position: 50% 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-`
+  try {
+    const response = await fetch(
+      `${strapiUrl}/api/artists?populate[artistInfo][populate]=homeImage&status=${
+        isEnabled ? 'preview' : 'live'
+      }`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
 
-export default function Home() {
-  const [slides, setSlides] = useState<Media[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
+    if (!response.ok) {
+      console.log('Erreur HTTP:', response.status)
+      throw new Error('Erreur lors de la récupération des artistes')
+    }
 
-  useEffect(() => {
-    fetchMedia(setSlides, setLoading)
-  }, [])
+    const data = await response.json()
+    const artists = data.data[0].artistInfo
 
-  if (loading) {
-    return <div>Loading...</div>
+    return <Home artists={artists} />
+  } catch (error) {
+    console.error('Erreur de fetch:', error)
+    return <div>Erreur lors du chargement des artistes.</div>
   }
-
-  return (
-    <Container>
-      <Main>
-        <ImageSlider slides={slides} />
-      </Main>
-    </Container>
-  )
 }
+
+export default HomePage

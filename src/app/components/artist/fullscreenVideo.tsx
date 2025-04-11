@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Video from '@/app/components/video'
-import Title from '@/app/components/title'
+import Video from '@/app/components/shared/video'
+import Title from '@/app/components/shared/title'
 import { YouTubeProps } from 'react-youtube'
 
 const Main = styled.div`

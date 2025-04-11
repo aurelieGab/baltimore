@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "archives",
+  "info": {
+    "singularName": "archive",
+    "pluralName": "archives",
+    "displayName": "archives",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "archiveArtist": {
+      "type": "component",
+      "repeatable": true,
+      "component": "artists.archive-artist"
+    }
+  }
+}

@@ -5,13 +5,16 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-  async rewrites() {
-    return [
+  images: {
+    domains: ['localhost'], 
+    remotePatterns: [
       {
-        source: '/wp-json/:path*',
-        destination: 'http://baltimore.local/wp-json/:path*',
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
       },
-    ];
+    ],
   },
 };
 
