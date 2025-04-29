@@ -9,25 +9,45 @@ export interface IBiography {
 }
 
 export interface IArtist {
-  id: string
-  name: string
-  slug: string
-  albumName: string
-  albumImage: { url: string }
-  albumUrl: string
-  biography: IBiography['content']
-  medias: {
-    id: string
-    link: string
-    image: {
-      url: string
-      width: number
-      height: number
-      alternativeText: string
+    id: number
+    slug: string
+    acf: {
+      artistName: string
+      slug: string
+      projectName: string,
+      projectUrl?: string,
+      homeImage: {
+        url: string
+        alt: string
+        width: number
+        height: number
+      }
+      albumImage?: {
+        url: string
+        alt: string
+        width: number
+        height: number
+      }
+      thumbImage?: {
+        url: string
+        alt: string
+        width: number
+        height: number
+      }  
+      artist_medias: {
+        id: string
+        link: string
+        logo: {
+          url: string
+          width: number
+          height: number
+          alt: string
+        }
+      }[]
+      spotifyId?: string
+      youtubeId?: string
+      biography?: IBiography['content']
     }
-  }[]
-  spotifyID: string
-  youtubeID: string
 }
 
 export interface IImageFormat  {
@@ -45,20 +65,5 @@ export interface IImageFormat  {
 
 
 export interface IArtists {
-  artists: {
-    id: string
-    name: string
-    homeImage: {
-      url: string
-      alternativeText: string
-      formats: IImageFormat
-    }
-    thumbImage?: {
-      url: string
-      alternativeText: string
-      formats: IImageFormat
-    }
-    slug: string
-    homeImagePosition?: string
-  }[]
+  artists: IArtist[]
 }

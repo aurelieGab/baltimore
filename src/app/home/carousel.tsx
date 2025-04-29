@@ -81,8 +81,6 @@ const SlideButton = styled.a<{ color?: string }>`
 `
 
 const Carousel = ({ artists }: IArtists) => {
-  const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL
-
   const [currentIndex, setCurrentIndex] = useState(0)
   const autoplayRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -114,21 +112,22 @@ const Carousel = ({ artists }: IArtists) => {
   return (
     <SliderContainer>
       <SliderTrack style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {artists.map(
-          (slide, index) =>
-            slide.homeImage?.url && (
-              <SlideImage
-                key={index}
-                src={`${strapiUrl}${slide.homeImage.url}`}
-                position={slide.homeImagePosition ?? 'center'}
-              >
-                <Title>{slide.name}</Title>
-                <SlideButton className={hind.className} href={`/${slide.slug}`} target="_blank">
-                  Plus d'infos
-                </SlideButton>
-              </SlideImage>
-            ),
-        )}
+        {artists.map((slide) => {
+          const {
+            id,
+            slug,
+            acf: { homeImage, artistName },
+          } = slide
+
+          return (
+            <SlideImage key={`homeSlide${id}`} src={homeImage.url} position="center">
+              <Title>{artistName}</Title>
+              <SlideButton className={hind.className} href={`/${slug}`} target="_blank">
+                Plus d'infos
+              </SlideButton>
+            </SlideImage>
+          )
+        })}
       </SliderTrack>
 
       <Arrow type="button" prev onClick={prevSlide}>

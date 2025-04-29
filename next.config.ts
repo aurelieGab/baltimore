@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['localhost'], 
+    domains: ['baltimore.local', 'localhost'], 
     remotePatterns: [
       {
         protocol: 'http',
