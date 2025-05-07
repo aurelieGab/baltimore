@@ -18,4 +18,8 @@ export default defineConfig({
   // The output directory for your css system
   outdir: "styled-system",
   jsxFramework: 'react',
+  syntax: 'template-literal', // required
+  globalVars: {
+    '--headerHeight': '3.75rem'
+  }
 });

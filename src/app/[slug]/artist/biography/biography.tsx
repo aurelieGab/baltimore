@@ -1,18 +1,14 @@
-'use client'
-import { IBiography } from '@/types/types'
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Hind } from 'next/font/google'
 import { safeParse } from '@/app/[slug]/artist/biography/parseHtml/parseHtml'
-const hind = Hind({ weight: '400', subsets: ['latin'] })
 
 const Bio = styled.div`
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  padding-right: 3.2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-right: 2rem;
   p {
-    padding-bottom: 2.4rem;
+    padding-bottom: 1.5rem;
     font-family: Hind;
   }
 `
@@ -28,25 +24,12 @@ const Bio = styled.div`
 //   line-height: 34px;
 // `
 
-const Biography: React.FC<IBiography> = ({ content }) => {
-  // const renderBiography = () => {
-  //   if (!content) {
-  //     return <div>Loading...</div>
-  //   }
-
-  //   return content.map((paragraph, index) => {
-  //     if (paragraph.type === 'paragraph' && paragraph.children && paragraph.children.length > 0) {
-  //       // On récupère le texte du premier enfant
-  //       const text = paragraph.children[0].text
-  //       return (
-  //         <div className={hind.className} key={index} dangerouslySetInnerHTML={{ __html: text }} />
-  //       )
-  //     }
-  //     return null
-  //   })
-  // }
-
-  return <Bio>{content && <div>{safeParse(content)}</div>}</Bio>
+interface IBiography {
+  content: string
 }
+
+const Biography: React.FC<IBiography> = ({ content }) => (
+  <Bio>{content && <div>{safeParse(content)}</div>}</Bio>
+)
 
 export default Biography

@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 import Image from 'next/image'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Roboto } from 'next/font/google'
@@ -23,12 +22,13 @@ const PressList = styled.ul`
   gap: 2.4rem;
   align-items: center;
 `
-const PressItem = styled.li<{ width: number }>`
-  width: ${({ width }) => (width ? `${width}px` : `9rem`)};
+
+const PressItem = styled.li`
+  max-width: 15rem;
 `
 
 const PressTitle = styled.p`
-  padding-bottom: 20px;
+  padding-bottom: 2rem;
   color: #303031;
   font-family: Roboto;
   font-size: 1.4rem;
@@ -37,33 +37,35 @@ const PressTitle = styled.p`
 const PressImage = styled(Image)`
   width: 100%;
   height: auto;
+  max-width: 9rem;
+  max-height: 6rem;
 `
 
 interface IPress {
   medias: IArtist['acf']['artist_medias']
+  className?: string
 }
 
-const Press: React.FC<IPress> = ({ medias, ...props }) => {
-  return (
-    <PressStyled {...props}>
-      <PressTitle>ILS EN PARLENT </PressTitle>
-      <PressList>
-        {medias.map((media) => {
-          const {
-            link,
-            logo: { url, width, height, alt },
-          } = media
-          return (
-            <PressItem key={`media${media.id}`} width={width}>
-              <a href={link} target="_blank">
-                <PressImage src={url} alt={alt} width={width} height={height} />
-              </a>
-            </PressItem>
-          )
-        })}
-      </PressList>
-    </PressStyled>
-  )
-}
+const Press: React.FC<IPress> = ({ medias, className }) => (
+  <PressStyled className={className}>
+    <PressTitle>ILS EN PARLENT </PressTitle>
+    <PressList>
+      {medias.map((media, key) => {
+        console.log(media)
+        const {
+          link,
+          logo: { url, width, height, alt },
+        } = media
+        return (
+          <PressItem key={`media${key}`}>
+            <a href={link} target="_blank">
+              <PressImage src={url} alt={alt} width={width} height={height} />
+            </a>
+          </PressItem>
+        )
+      })}
+    </PressList>
+  </PressStyled>
+)
 
 export default Press

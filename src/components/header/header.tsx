@@ -1,6 +1,4 @@
-'use client'
-
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Oswald } from 'next/font/google'
@@ -9,20 +7,17 @@ import { Oswald } from 'next/font/google'
 const oswald = Oswald({ subsets: ['latin'] })
 // const anton = Oswald({ weight: '400', subsets: ['latin'] })
 
-const HeaderStyled = styled('header').withConfig({
-  shouldForwardProp: (prop) => prop !== 'white',
-})<{ white: boolean }>`
+const HeaderStyled = styled('header')`
   position: relative;
-  color: ${(props) => (props.white ? '#000' : '#fff')};
-  background: ${(props) => (props.white ? '#fff' : '#000')};
-  z-index: 3;
-  height: ${({ theme }) => theme.headerHeight};
-
+  height: var(--headerHeight);
+  background: '#fff';
   box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  color: '#000';
+  z-index: 3;
 `
 const Nav = styled.nav`
   display: flex;
-  padding: 1.6rem;
+  padding: 1rem;
   align-items: center;
 `
 const NavList = styled.nav`
@@ -35,8 +30,8 @@ const NavList = styled.nav`
 const NavItem = styled.li`
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  font-size: 1.7rem;
+  padding: 0 0.625rem;
+  font-size: 1.1rem;
   font-weight: 300;
   text-transform: uppercase;
 `
@@ -47,25 +42,12 @@ const TextLink = styled(Link)`
   }
 `
 
-const Logo = styled(Image)``
-
-const IconImage = styled(Image)`
-  display: block;
-`
-
-interface IHeader {
-  white: boolean
-}
-
-const Header = (props: IHeader) => {
-  const img = props.white ? '/logo.svg' : '/logoWhite.svg'
-
+const Header = () => {
   return (
-    <HeaderStyled white={props.white}>
+    <HeaderStyled>
       <Nav>
         <Link href="/">
-          {' '}
-          <Logo src={img} alt="Baltimore" width={200} height={24} priority />
+          <Image src="./logo.svg" alt="Baltimore" width={200} height={24} priority />
         </Link>
         <NavList className={oswald.className}>
           <NavItem>
@@ -86,13 +68,7 @@ const Header = (props: IHeader) => {
               target="_blank"
               title="Instagram"
             >
-              <IconImage
-                src="/icons/insta.png"
-                width={22}
-                height={22}
-                alt="Instagram"
-                style={{ display: 'block' }}
-              />
+              <Image src="/icons/insta.png" width={22} height={22} alt="Instagram" />
             </TextLink>
           </NavItem>
         </NavList>

@@ -1,9 +1,6 @@
-'use client'
-import React from 'react'
-
+import { styled } from '~/styled-system/jsx'
 import { Oswald, Hind } from 'next/font/google'
 import Image from 'next/image'
-import styled from 'styled-components'
 import DownButton from '@/components/button/downButton'
 import { IArtist } from '@/types/types'
 
@@ -12,7 +9,7 @@ const lora = Hind({ weight: '400', subsets: ['latin'] })
 
 const Content = styled.div`
   display: flex;
-  height: calc(100vh - ${(props) => props.theme.headerHeight});
+  height: calc(100vh - var(--headerHeight));
   flex-direction: column;
 
   @media (min-width: 769px) {
@@ -52,9 +49,9 @@ const AlbumLink = styled.a`
   bottom: 0;
   left: 0;
   right: 0;
-  padding-top: 3.2rem;
+  padding-top: 2rem;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: 1rem;
   justify-content: center;
   opacity: 0;
   z-index: 2;
@@ -78,22 +75,22 @@ const AudioLink = styled.div`
   align-items: center;
   color: #fff;
   flex-direction: column;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   z-index: 2;
 `
 
 const AudioText = styled.p`
-  padding-bottom: 1.6rem;
+  padding-bottom: 1rem;
   pointer-events: none;
 `
 
 const ContentRight = styled.div`
   position: relative;
-  padding: 1.6rem;
+  padding: 1rem;
   flex: 0;
 
   @media (min-width: 769px) {
-    padding-left: 3.2rem;
+    padding-left: 2rem;
     width: 50%;
     align-content: center;
     flex: 1;
@@ -102,24 +99,25 @@ const ContentRight = styled.div`
 
 const Name = styled.p`
   padding: 0 0 1.6rem;
-  font-size: 4.4rem;
+  font-size: 2.75rem;
 
   @media (min-width: 769px) {
-    font-size: 7.4rem;
+    font-size: 4.5rem;
+    line-height: 5.75rem;
   }
 `
 const SubName = styled.p`
   color: #303030;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   @media (min-width: 769px) {
-    font-size: 2.4rem;
+    font-size: 1.5rem;
   }
 `
 const DownScrollButton = styled(DownButton)`
-  margin-top: 2.4rem;
+  margin-top: 1.5rem;
 
   @media (min-width: 769px) {
-    margin-top: 3.5rem;
+    margin-top: 2.25rem;
   }
 `
 

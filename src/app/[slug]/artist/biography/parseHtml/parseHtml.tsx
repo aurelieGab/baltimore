@@ -1,5 +1,5 @@
 import parse, { DOMNode, Element as HtmlParserElement } from 'html-react-parser'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 
 const Paragraph = styled.p`
   padding-bottom: 16px;

@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 
 const SeparatorStyled = styled.div`
   margin: 20px 0 0;

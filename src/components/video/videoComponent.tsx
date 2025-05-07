@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import YouTube from 'react-youtube'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 
 const VideoContainer = styled.div`
   position: relative;

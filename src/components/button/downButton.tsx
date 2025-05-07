@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 import { Hind } from 'next/font/google'
 import Image from 'next/image'
 const hind = Hind({ weight: '400', subsets: ['latin'] })
@@ -9,12 +8,12 @@ const DownButtonStyled = styled.a`
   flex-direction: column-reverse;
   align-items: center;
   cursor: pointer;
-  gap: 12px;
+  gap: 0.75rem;
 
   @media (min-width: 769px) {
     flex-direction: row;
-    font-size: 24px;
-    gap: 10px;
+    font-size: 1.5rem;
+    gap: 0.625rem;
   }
 
   &:hover img {
@@ -24,14 +23,14 @@ const DownButtonStyled = styled.a`
 
 const IconDownLink = styled(Image)`
   display: block;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 2.25rem;
+  height: 2.25rem;
   transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
 `
 
 const IconDownText = styled.p`
-  font-size: 1.8rem;
+  font-size: 1.125rem;
   @media (max-width: 768px) {
     display: none;
   }

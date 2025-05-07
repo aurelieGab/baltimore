@@ -1,13 +1,3 @@
-export interface IBiography {
-  content: {
-    type: 'paragraph'
-    children: {
-      type: 'text'
-      text: string
-    }[]
-  }[]
-}
-
 export interface IArtist {
     id: number
     slug: string
@@ -46,7 +36,7 @@ export interface IArtist {
       }[]
       spotifyId?: string
       youtubeId?: string
-      biography?: IBiography['content']
+      biography?: string
     }
 }
 
@@ -66,4 +56,15 @@ export interface IImageFormat  {
 
 export interface IArtists {
   artists: IArtist[]
+}
+
+export type MediaType = {
+  id: string
+  link: string
+  logo: {
+    url: string
+    width: number
+    height: number
+    alt: string
+  }
 }

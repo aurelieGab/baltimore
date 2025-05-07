@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 
 const Audio = styled.div`
   position: relative;

@@ -1,5 +1,5 @@
 'use client'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Bebas_Neue } from 'next/font/google'
 import Carousel from '@/app/home/carousel'
@@ -13,7 +13,7 @@ const Container = styled.div`
 const Main = styled.main`
   position: relative;
   width: 100%;
-  min-height: calc(100vh - ${(props) => props.theme.headerHeight});
+  min-height: calc(100vh - var(--headerHeight));
   background-size: cover;
   background-position: 50% 0;
   display: flex;

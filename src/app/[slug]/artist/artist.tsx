@@ -1,7 +1,7 @@
 'use client'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
+import { styled } from '~/styled-system/jsx'
 import Album from '@/app/[slug]/artist/album/album'
-import styled from 'styled-components'
 import Press from '@/app/[slug]/artist/press/press'
 // import VideoComponent from '@/app/components/shared/videoComponent'
 import Biography from '@/app/[slug]/artist/biography/biography'
@@ -10,35 +10,35 @@ import { IArtist } from '@/types/types'
 
 const BlockInfos = styled.div`
   position: relative;
-  padding: 0 1.6rem 1.6rem;
+  padding: 0 1rem 1rem;
   scroll-behavior: smooth;
   @media (min-width: 1024px) {
     display: flex;
+    gap: 2rem;
   }
 `
 const PressBlock = styled(Press)`
-  margin-top: 2.4rem;
+  margin-top: 1.5rem;
 
   @media (min-width: 1024px) {
-    margin-top: 4.8rem;
+    margin-top: 3rem;
     flex: 1;
   }
 `
 
 const VideoBlock = styled.div`
   @media (min-width: 1024px) {
-    margin-top: 3.2rem;
-    margin-left: 3.2rem;
+    margin-top: 2rem;
     flex: 1;
   }
 `
 
 const AlbumLegend = styled.p`
-  padding-top: 3.2rem;
-  padding-bottom: 1.6rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   color: #303031;
   font-family: Roboto;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
 `
 
 interface IArtistProps {
@@ -49,8 +49,6 @@ const Artist: React.FC<IArtistProps> = ({ artist }) => {
     acf: { artistName, projectName, albumImage, projectUrl, biography, artist_medias, spotifyId },
     id,
   } = artist['0']
-
-  console.log(spotifyId)
 
   const blockInfoRef = useRef<HTMLDivElement | null>(null)
 
@@ -72,10 +70,12 @@ const Artist: React.FC<IArtistProps> = ({ artist }) => {
         onClick={scrollToInfo}
       />
       <BlockInfos ref={blockInfoRef}>
-        <div style={{ flex: 1 }}>
-          <AlbumLegend>BIOGRAPHIE </AlbumLegend>
-          {biography !== undefined && <Biography content={biography} />}
-        </div>
+        {biography !== '' && biography !== undefined && (
+          <div style={{ flex: 1 }}>
+            <AlbumLegend>BIOGRAPHIE </AlbumLegend>
+            <Biography content={biography} />
+          </div>
+        )}
         <VideoBlock>
           {spotifyId && <Spotify id={spotifyId} />}
           {/* <VideoComponent /> */}

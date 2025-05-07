@@ -4,46 +4,48 @@ import { Anton } from 'next/font/google'
 import Medias from '@/app/artists/thumbnail'
 import { IArtists } from '@/types/types'
 
-const Container = styled('div', {
-  base: {
-    position: 'relative',
-    minHeight: '100vh',
-    fontFamily: 'Anton',
-    background: '#efefeb',
-    color: '#fff',
-  },
-})
+const Container = styled.div`
+  position: relative;
+  min-height: 100vh;
+  font-family: Anton;
+  background: #efefeb;
+  color: #fff;
+`
 
-const Main = styled('main', {
-  base: {
-    position: 'relative',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+const Main = styled.main`
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
-const Content = styled('ul', {
-  base: {
-    display: 'flex',
-    padding: '1.6rem',
-    flexWrap: 'wrap',
-    gap: '1.6rem',
-    justifyContent: 'space-between',
-  },
-})
+const Content = styled.ul`
+  display: grid;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-const Artists: React.FC<IArtists> = ({ artists }) => {
-  return (
-    <Container>
-      <Main>
-        <Content>
-          <Medias artists={artists} />
-        </Content>
-      </Main>
-    </Container>
-  )
-}
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+`
+
+const Artists: React.FC<IArtists> = ({ artists }) => (
+  <Container>
+    <Main>
+      <Content>
+        <Medias artists={artists} />
+      </Content>
+    </Main>
+  </Container>
+)
 
 export default Artists

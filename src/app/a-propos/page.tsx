@@ -1,13 +1,12 @@
-'use client'
-import styled from 'styled-components'
+import { styled } from '~/styled-system/jsx'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Bebas_Neue, Lora, Roboto, Hind } from 'next/font/google'
 
 const hind = Hind({ weight: '400', subsets: ['latin'] })
 
-const TitleBlock = styled.div<{ white?: boolean }>`
+const TitleBlock = styled.div`
   padding: 100px 0;
-  background: ${({ white }) => (white ? '#fff' : '#000')};
+  background: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,12 +20,12 @@ const Title = styled.p`
   font-family: 'Bebas Neue';
 `
 
-const Number = styled.p`
-  margin: 0 auto;
-  color: #000;
-  font-size: 36px;
-  font-family: 'Bebas Neue';
-`
+// const Number = styled.p`
+//   margin: 0 auto;
+//   color: #000;
+//   font-size: 36px;
+//   font-family: 'Bebas Neue';
+// `
 
 const Content = styled.div`
   margin: 56px auto 0;
@@ -38,18 +37,18 @@ const Content = styled.div`
   }
 `
 
-const Numbers = styled.div`
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  gap: 16px;
-`
+// const Numbers = styled.div`
+//   display: flex;
+//   text-align: center;
+//   justify-content: center;
+//   gap: 16px;
+// `
 
-const SubTitle = styled.p`
-  margin: 0 auto;
-  color: #000;
-  font-size: 24px;
-`
+// const SubTitle = styled.p`
+//   margin: 0 auto;
+//   color: #000;
+//   font-size: 24px;
+// `
 
 const About = () => {
   return (
