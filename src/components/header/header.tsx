@@ -5,14 +5,14 @@ import { Oswald } from 'next/font/google'
 // import { Oswald } from 'next/font/google'
 
 const oswald = Oswald({ subsets: ['latin'] })
-// const anton = Oswald({ weight: '400', subsets: ['latin'] })
 
 const HeaderStyled = styled('header')`
-  position: relative;
+  position: sticky;
+  top: 0;
   height: var(--headerHeight);
-  background: '#fff';
+  background: #fff;
   box-shadow: 0 1px rgba(0, 0, 0, 0.1);
-  color: '#000';
+  color: #000;
   z-index: 3;
 `
 const Nav = styled.nav`
@@ -42,12 +42,20 @@ const TextLink = styled(Link)`
   }
 `
 
+const Test = styled.div`
+  position: relative;
+  width: 200px;
+  height: 24px;
+`
+
 const Header = () => {
   return (
     <HeaderStyled>
       <Nav>
         <Link href="/">
-          <Image src="./logo.svg" alt="Baltimore" width={200} height={24} priority />
+          <Test>
+            <Image src="./logo.svg" alt="Baltimore" fill priority />
+          </Test>
         </Link>
         <NavList className={oswald.className}>
           <NavItem>

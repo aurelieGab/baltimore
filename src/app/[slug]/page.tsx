@@ -9,7 +9,7 @@ const ArtistsPage = async ({ params }: { params: { slug: string } }) => {
   }
   const artist = await fetchArtistBySlug({ slug })
 
-  return <Artist artist={artist} key={artist.id} />
+  return <Artist artist={artist} />
 }
 
 export default ArtistsPage

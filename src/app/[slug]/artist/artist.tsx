@@ -26,19 +26,11 @@ const PressBlock = styled(Press)`
   }
 `
 
-const VideoBlock = styled.div`
+const MediaBlock = styled.div`
   @media (min-width: 1024px) {
     margin-top: 2rem;
     flex: 1;
   }
-`
-
-const AlbumLegend = styled.p`
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-  color: #303031;
-  font-family: Roboto;
-  font-size: 0.875rem;
 `
 
 interface IArtistProps {
@@ -47,7 +39,6 @@ interface IArtistProps {
 const Artist: React.FC<IArtistProps> = ({ artist }) => {
   const {
     acf: { artistName, projectName, albumImage, projectUrl, biography, artist_medias, spotifyId },
-    id,
   } = artist['0']
 
   const blockInfoRef = useRef<HTMLDivElement | null>(null)
@@ -61,7 +52,7 @@ const Artist: React.FC<IArtistProps> = ({ artist }) => {
   }
 
   return (
-    <div key={id}>
+    <div>
       <Album
         artistName={artistName}
         projectName={projectName}
@@ -70,17 +61,12 @@ const Artist: React.FC<IArtistProps> = ({ artist }) => {
         onClick={scrollToInfo}
       />
       <BlockInfos ref={blockInfoRef}>
-        {biography !== '' && biography !== undefined && (
-          <div style={{ flex: 1 }}>
-            <AlbumLegend>BIOGRAPHIE </AlbumLegend>
-            <Biography content={biography} />
-          </div>
-        )}
-        <VideoBlock>
+        {biography !== '' && biography !== undefined && <Biography content={biography} />}
+        <MediaBlock>
           {spotifyId && <Spotify id={spotifyId} />}
           {/* <VideoComponent /> */}
           {artist_medias && <PressBlock medias={artist_medias} />}
-        </VideoBlock>
+        </MediaBlock>
       </BlockInfos>
     </div>
   )

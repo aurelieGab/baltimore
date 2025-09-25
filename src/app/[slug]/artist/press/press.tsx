@@ -1,7 +1,6 @@
 import { styled } from '~/styled-system/jsx'
 import Image from 'next/image'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Roboto } from 'next/font/google'
 import { IArtist } from '@/types/types'
 
 const PressStyled = styled.div`
@@ -30,15 +29,15 @@ const PressItem = styled.li`
 const PressTitle = styled.p`
   padding-bottom: 2rem;
   color: #303031;
-  font-family: Roboto;
-  font-size: 1.4rem;
+  font-family: 'Oswald';
+  font-size: 1.2rem;
 `
 
 const PressImage = styled(Image)`
   width: 100%;
   height: auto;
   max-width: 9rem;
-  max-height: 6rem;
+  max-height: 5rem;
 `
 
 interface IPress {
@@ -48,10 +47,9 @@ interface IPress {
 
 const Press: React.FC<IPress> = ({ medias, className }) => (
   <PressStyled className={className}>
-    <PressTitle>ILS EN PARLENT </PressTitle>
+    <PressTitle>ILS EN PARLENT</PressTitle>
     <PressList>
       {medias.map((media, key) => {
-        console.log(media)
         const {
           link,
           logo: { url, width, height, alt },

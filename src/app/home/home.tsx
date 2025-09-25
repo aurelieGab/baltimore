@@ -1,4 +1,3 @@
-'use client'
 import { styled } from '~/styled-system/jsx'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Bebas_Neue } from 'next/font/google'

@@ -1,10 +1,9 @@
 import { styled } from '~/styled-system/jsx'
-import { Oswald, Hind } from 'next/font/google'
+import { Hind } from 'next/font/google'
 import Image from 'next/image'
 import DownButton from '@/components/button/downButton'
 import { IArtist } from '@/types/types'
 
-const oswald = Oswald({ weight: '400', subsets: ['latin'] })
 const lora = Hind({ weight: '400', subsets: ['latin'] })
 
 const Content = styled.div`
@@ -100,6 +99,7 @@ const ContentRight = styled.div`
 const Name = styled.p`
   padding: 0 0 1.6rem;
   font-size: 2.75rem;
+  font-family: 'Oswald';
 
   @media (min-width: 769px) {
     font-size: 4.5rem;
@@ -108,6 +108,7 @@ const Name = styled.p`
 `
 const SubName = styled.p`
   color: #303030;
+  font-family: 'Hind';
   font-size: 1.125rem;
   @media (min-width: 769px) {
     font-size: 1.5rem;
@@ -154,8 +155,8 @@ const Album: React.FC<IAlbum> = ({ artistName, projectName, albumImage, projectU
         )}
       </ContentLeft>
       <ContentRight>
-        <Name className={oswald.className}>{artistName}</Name>
-        <SubName className={lora.className}>{projectName}</SubName>
+        <Name>{artistName}</Name>
+        <SubName>{projectName}</SubName>
         <DownScrollButton onClick={onClick} />
       </ContentRight>
     </Content>

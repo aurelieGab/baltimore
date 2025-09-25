@@ -1,3 +1,4 @@
+'use client'
 import { IArtists } from '@/types/types'
 import { useEffect, useRef, useState } from 'react'
 import { styled } from '~/styled-system/jsx'
@@ -124,12 +125,7 @@ const Carousel = ({ artists }: IArtists) => {
           } = slide
 
           return (
-            <SlideImage
-              key={`homeSlide${id}`}
-              // style={{
-              //   backgroundImage: `url(${homeImage.url})`,
-              // }}
-            >
+            <SlideImage key={`homeSlide${id}`}>
               <TestImage src={homeImage.url} fill alt={homeImage.alt} />
               <Title>{artistName}</Title>
               <SlideButton className={hind.className} href={`/${slug}`} target="_blank">
