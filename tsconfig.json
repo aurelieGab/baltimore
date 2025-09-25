@@ -19,8 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "~/styled-system/*": ["./styled-system/*"]
+    },
+    "types": ["youtube"]
   },
   "include": [
     "next-env.d.ts",
