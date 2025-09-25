@@ -1,7 +1,10 @@
 import { styled } from '~/styled-system/jsx'
 import Image from 'next/image'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Roboto, Oswald } from 'next/font/google'
 import { IArtist } from '@/types/types'
+
+const oswald = Oswald({ weight: ['300', '400', '500'], subsets: ['latin'] })
 
 const PressStyled = styled.div`
   padding: 1.6rem;
@@ -29,7 +32,6 @@ const PressItem = styled.li`
 const PressTitle = styled.p`
   padding-bottom: 2rem;
   color: #303031;
-  font-family: 'Oswald';
   font-size: 1.2rem;
 `
 
@@ -47,7 +49,7 @@ interface IPress {
 
 const Press: React.FC<IPress> = ({ medias, className }) => (
   <PressStyled className={className}>
-    <PressTitle>ILS EN PARLENT</PressTitle>
+    <PressTitle className={oswald.className}>ILS EN PARLENT</PressTitle>
     <PressList>
       {medias.map((media, key) => {
         const {

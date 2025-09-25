@@ -2,7 +2,6 @@
 import { IArtists } from '@/types/types'
 import { useEffect, useRef, useState } from 'react'
 import { styled } from '~/styled-system/jsx'
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Hind } from 'next/font/google'
 import Image from 'next/image'
 const hind = Hind({ weight: '400', subsets: ['latin'] })
@@ -112,7 +111,7 @@ const Carousel = ({ artists }: IArtists) => {
     }, 6000)
 
     return () => stopAutoplay()
-  }, [])
+  }, [artists.length])
 
   return (
     <SliderContainer>
