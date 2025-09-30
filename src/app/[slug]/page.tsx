@@ -1,7 +1,11 @@
 import { fetchArtistBySlug } from '@/api/artists'
 import Artist from '@/app/[slug]/artist/artist'
 
-const ArtistsPage = async ({ params }: { params: { slug: string } }) => {
+interface Props {
+  params: Promise<{ slug: string }>
+}
+
+const ArtistsPage = async ({ params }: Props) => {
   const { slug } = await params
 
   if (!slug) {
