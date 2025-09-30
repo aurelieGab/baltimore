@@ -6,9 +6,14 @@ module.exports = {
       args: "run start",
       env: {
         NODE_ENV: "production",
-        PORT: 3001,
+        // Next.js écoutera automatiquement la variable PORT
+        PORT: 3001, 
       },
-      exec_mode: "fork"
+      // Changez "fork" pour "cluster"
+      exec_mode: "cluster",
+      // Optionnel mais recommandé : spécifiez le nombre d'instances
+      // -1 signifie autant d'instances que de cœurs CPU
+      instances: "max", 
     },
   ],
 };
