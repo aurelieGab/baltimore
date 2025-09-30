@@ -37,7 +37,8 @@ const VideoComponent = ({ ...props }) => {
   }
 
   useEffect(() => {
-    if (!observerTargetRef.current) return
+    const currentTarget = observerTargetRef.current
+    if (!currentTarget) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -46,11 +47,11 @@ const VideoComponent = ({ ...props }) => {
       { threshold: 0.5 },
     )
 
-    observer.observe(observerTargetRef.current)
+    observer.observe(currentTarget)
 
     return () => {
-      if (observerTargetRef.current) {
-        observer.unobserve(observerTargetRef.current)
+      if (currentTarget) {
+        observer.unobserve(currentTarget)
       }
     }
   }, [])
